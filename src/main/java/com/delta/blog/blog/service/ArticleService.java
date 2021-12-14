@@ -1,5 +1,17 @@
 package com.delta.blog.blog.service;
 
-public class ArticleService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.delta.blog.blog.model.Article;
+import com.delta.blog.blog.repository.ArticleRepository;
+
+
+@Service
+public class ArticleService {
+	@Autowired
+	private ArticleRepository articleRepository;
+	public Iterable<Article> getArticlesByName(String name){
+		return articleRepository.findByName(name);
+	}
 }
