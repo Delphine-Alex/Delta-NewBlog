@@ -22,4 +22,8 @@ public class ArticleService {
 		return articleRepository.findById(id);
 	}
 	
+//	To do :
+//	Add an article
+	
+	
 }

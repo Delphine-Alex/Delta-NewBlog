@@ -25,5 +25,8 @@ public class CategoryController {
 		return category;
 	}
 	
+//	To do :
+//	@PostMapping("/categories")
+	
 	
 }
