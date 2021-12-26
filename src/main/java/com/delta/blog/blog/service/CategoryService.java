@@ -21,5 +21,9 @@ public class CategoryService {
 	public Optional<Category> getCategoryById(Integer id) {
 		return categoryRepository.findById(id);
 	}
+		
+//	To do :
+//	Add a category
+	
 	
 }

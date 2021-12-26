@@ -25,5 +25,8 @@ public class ArticleController {
 		return article;
 	}
 	
+//	To do :
+//	@PostMapping("/articles")
+	
 	
 }

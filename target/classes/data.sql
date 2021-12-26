@@ -33,7 +33,7 @@ INSERT INTO users (id, author_name, mail, password) VALUES
    
 CREATE TABLE articles (
    id  INT NOT NULL AUTO_INCREMENT,
-   title VARCHAR(150),
+   title VARCHAR(50),
    author_name VARCHAR(50) NOT NULL,
    date DATE NOT NULL,
    content VARCHAR(250) NOT NULL,
