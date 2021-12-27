@@ -17,27 +17,35 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 @Component
 public class JwtTokenFilter extends OncePerRequestFilter{
+	
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
+	
 	@Autowired
 	private CustomUserDetailsService userDetailsService;
+	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		String header=request.getHeader(HttpHeaders.AUTHORIZATION.toLowerCase());
-		if(header==null || header.isEmpty() || !header.startsWith("Bearer ")) {
+		
+		String header = request.getHeader(HttpHeaders.AUTHORIZATION.toLowerCase());
+		if(header == null || header.isEmpty() || !header.startsWith("Bearer ")) {
 			filterChain.doFilter(request, response);
 			return; 
 		}
+		
 		String token = header.split(" ")[1].trim();
 		
 		System.out.println("Extracted token is " + token);
+		
 		if(!jwtTokenUtil.validate(token)) {
 			filterChain.doFilter(request, response);
 			return;
 			
 		}
-		UserDetails userDetails=userDetailsService.loadUserByUsername(jwtTokenUtil.getUsername(token));
+		
+		UserDetails userDetails = userDetailsService.loadUserByUsername(jwtTokenUtil.getUsername(token));
+		
 		UsernamePasswordAuthenticationToken authentication= new UsernamePasswordAuthenticationToken(userDetails, null,userDetails.getAuthorities());
 		authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 		

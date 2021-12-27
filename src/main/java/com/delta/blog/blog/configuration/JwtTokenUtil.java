@@ -20,9 +20,10 @@ import io.jsonwebtoken.UnsupportedJwtException;
 @Component
 public class JwtTokenUtil {
 	private final String jwtSecret = "zdtlD3JK56m6wTTgsNFhqzjqP";
-    private final String jwtIssuer = "com.openclassrooms";
+    private final String jwtIssuer = "com.delta";
 
     private final Logger logger = LoggerFactory.getLogger(JwtTokenUtil.class);
+    
     public String generateAccessToken(User user) {
         return Jwts.builder()
         		.setSubject(format("%s", user.getUsername()))

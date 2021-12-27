@@ -29,19 +29,20 @@ public class CategoryController {
 		CategoryFull p = categoryService.getCategoryById(id);
 		return new ResponseEntity<CategoryFull>(p, HttpStatus.OK);
 	}
-	@PostMapping("/category")
+	
+	@PostMapping("/categories")
 	public CategoryFull addCategory(@RequestBody Category category) {
+		return categoryService.addCategory(category);
+	}
+	
+	@PutMapping("/categories")
+	public CategoryFull updateCategory(@RequestBody Category category) {
 		return categoryService.addCategory(category);
 	}
 	
 	@DeleteMapping("/category/{id}")
 	public void deleteCategory(@PathVariable("id") Integer id) {
 		categoryService.deleteCategoryById(id);
-	}
-	
-	@PutMapping("/category")
-	public CategoryFull updateCategory(@RequestBody Category category) {
-		return categoryService.addCategory(category);
 	}
 
 	

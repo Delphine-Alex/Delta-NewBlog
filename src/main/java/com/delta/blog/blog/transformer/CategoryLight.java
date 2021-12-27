@@ -1,7 +1,5 @@
 package com.delta.blog.blog.transformer;
 
-import javax.persistence.Column;
-
 public class CategoryLight {
 	private Integer id;
 	public Integer getId() {
