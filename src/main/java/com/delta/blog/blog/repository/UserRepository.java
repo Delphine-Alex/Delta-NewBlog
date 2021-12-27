@@ -7,5 +7,6 @@ import com.delta.blog.blog.model.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
-
+	
+	public User findByName(String name);
 }

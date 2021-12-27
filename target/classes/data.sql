@@ -24,11 +24,11 @@ CREATE TABLE users (
 );
 
 INSERT INTO users (id, author_name, mail, password) VALUES
-   (1, 'Viktor', 'viktor@gmail.com', 'pwd'),
-   (2, 'Jinx', 'jinx@gmail.com', 'password'),
-   (3, 'Pierre', 'pierre@gmail.com', 'user' ),
-   (4, 'Alexandre', 'alexandre@gmail.com', 'user1'),
-   (5, 'Alexandra', 'alexandra@gmail.com', 'test' );
+   (1, 'Viktor', 'viktor@gmail.com', '$2a$12$yvrheRklzDeANcdZp5ybW.EtuhqjlJxI8n555vctwSNWrG6x5o2pe'),
+   (2, 'Jinx', 'jinx@gmail.com', '$2a$12$yvrheRklzDeANcdZp5ybW.EtuhqjlJxI8n555vctwSNWrG6x5o2pe'),
+   (3, 'Pierre', 'pierre@gmail.com', '$2a$12$yvrheRklzDeANcdZp5ybW.EtuhqjlJxI8n555vctwSNWrG6x5o2pe' ),
+   (4, 'Alexandre', 'alexandre@gmail.com', '$2a$12$yvrheRklzDeANcdZp5ybW.EtuhqjlJxI8n555vctwSNWrG6x5o2pe'),
+   (5, 'Alexandra', 'alexandra@gmail.com', '$2a$12$yvrheRklzDeANcdZp5ybW.EtuhqjlJxI8n555vctwSNWrG6x5o2pe' );
    
    
 CREATE TABLE articles (
@@ -61,7 +61,7 @@ CREATE TABLE comments (
    author_name VARCHAR(50) NOT NULL,
    date DATE NOT NULL,
    comment VARCHAR(150) NOT NULL,
-   article_id INT,
+   article_id INT NOT NULL,
    user_id INT NOT NULL, 
    CONSTRAINT PK_COMMENT PRIMARY KEY (`id`),
    CONSTRAINT FK_COMMENT_USER FOREIGN KEY (`user_id`) REFERENCES users (`id`)
