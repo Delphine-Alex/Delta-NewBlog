@@ -1,12 +1,14 @@
 package com.delta.blog.blog.service;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.delta.blog.blog.model.Category;
 import com.delta.blog.blog.repository.CategoryRepository;
+import com.delta.blog.blog.transformer.CategoryFull;
+import com.delta.blog.blog.transformer.CategoryTransformer;
 
 @Service
 public class CategoryService {
@@ -14,16 +16,22 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	public Iterable<Category> getCategories() {
-		return categoryRepository.findAll();
+	@Autowired
+	private CategoryTransformer categoryTransformer;
+	
+	public CategoryFull getCategoryById(Integer id) {
+		return categoryTransformer.transform(categoryRepository.findById(id).get());
+	}
+	public List<CategoryFull> getCategories(){
+		return categoryTransformer.transform(categoryRepository.findAll());
 	}
 	
-	public Optional<Category> getCategoryById(Integer id) {
-		return categoryRepository.findById(id);
+	public CategoryFull addCategory(Category category) {
+		return categoryTransformer.transform(categoryRepository.save(category));
 	}
-		
-//	To do :
-//	Add a category
+	public void deleteCategoryById(Integer id) {
+		categoryRepository.deleteById(id);
+	}
 	
 	
 }

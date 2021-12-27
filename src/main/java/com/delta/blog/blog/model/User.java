@@ -1,10 +1,17 @@
 package com.delta.blog.blog.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +31,22 @@ public class User {
 	
 	@Column(name = "password")
 	private String password;
+	@OneToMany(
+			cascade=CascadeType.ALL, 
+			fetch =FetchType.EAGER,
+			orphanRemoval = true 
+			)
+	@JoinColumn(name="user_id") 
+	
+	private List<Article> articles= new ArrayList<>();
+	// à ajouter one to many pour la table Comment
+	public List<Article> getArticles() {
+		return articles;
+	}
+
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
+	}
 
 	public Integer getId() {
 		return id;
