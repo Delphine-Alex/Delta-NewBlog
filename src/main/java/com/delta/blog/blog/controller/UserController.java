@@ -26,7 +26,7 @@ public class UserController {
 	}
 	
 //	To do :
-//	@PostMapping("/users")
+//	@PostMapping("/users") -> don't need to create user
 	
 	
 }
