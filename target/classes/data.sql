@@ -37,28 +37,33 @@ CREATE TABLE articles (
    author_name VARCHAR(50) NOT NULL,
    date DATE NOT NULL,
    content VARCHAR(250) NOT NULL,
-   category_id INT NOT NULL,
    user_id INT NOT NULL, 
    CONSTRAINT PK_ARTICLE PRIMARY KEY (`id`),
-   CONSTRAINT FK_ARTICLE_CATEGORY FOREIGN KEY (`category_id`) REFERENCES categories (`id`),
    CONSTRAINT FK_ARTICLE_USER FOREIGN KEY (`user_id`) REFERENCES users (`id`)
 );
 
-INSERT INTO articles (id, title, author_name, date, content, category_id, user_id) VALUES 
-   (1,'test', 'Pierre', '2021-11-01', 'Lorem lorem lorem', 1, 3 ),
-   (2, 'test1','Alexandre', '2021-09-20', 'Lorem lorem lorem', 1, 4), 
-   (3, 'test2', 'Alexandra', '2020-04-23', 'Lorem lorem lorem', 2, 5);
+INSERT INTO articles (id, title, author_name, date, content, user_id) VALUES 
+   (1,'test', 'Pierre', '2021-11-01', 'Lorem lorem lorem', 3 ),
+   (2, 'test1','Alexandre', '2021-09-20', 'Lorem lorem lorem', 4), 
+   (3, 'test2', 'Alexandra', '2020-04-23', 'Lorem lorem lorem', 5);
 
+CREATE TABLE category_article (
+  category_id INT NOT NULL,
+  article_id INT NOT NULL
+);  
 
+INSERT INTO category_article (category_id, article_id) VALUES
+  (1,1),
+  (2,2);
+  
 CREATE TABLE comments (
    id  INT NOT NULL AUTO_INCREMENT,
    author_name VARCHAR(50) NOT NULL,
    date DATE NOT NULL,
    comment VARCHAR(150) NOT NULL,
-   article_id INT NOT NULL,
+   article_id INT,
    user_id INT NOT NULL, 
    CONSTRAINT PK_COMMENT PRIMARY KEY (`id`),
-   CONSTRAINT FK_COMMENT_ARTICLE FOREIGN KEY (`article_id`) REFERENCES articles (`id`),
    CONSTRAINT FK_COMMENT_USER FOREIGN KEY (`user_id`) REFERENCES users (`id`)
  );
 
