@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,10 @@ import io.jsonwebtoken.UnsupportedJwtException;
 
 @Component
 public class JwtTokenUtil {
-	private final String jwtSecret = "zdtlD3JK56m6wTTgsNFhqzjqP";
+	
+	@Value("${jwt.secret}")
+	private String secret;
+	
     private final String jwtIssuer = "com.delta";
 
     private final Logger logger = LoggerFactory.getLogger(JwtTokenUtil.class);
@@ -30,13 +34,13 @@ public class JwtTokenUtil {
                 .setIssuer(jwtIssuer)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000)) 
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
 
     public String getUsername(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
+                .setSigningKey(secret)
                 .parseClaimsJws(token)
                 .getBody();
 
@@ -45,7 +49,7 @@ public class JwtTokenUtil {
 
     public Date getExpirationDate(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
+                .setSigningKey(secret)
                 .parseClaimsJws(token)
                 .getBody();
 
@@ -54,7 +58,7 @@ public class JwtTokenUtil {
 
     public boolean validate(String token) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+            Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
             return true;
         } catch (SignatureException ex) {
             logger.error("Invalid JWT signature - {}", ex.getMessage());

@@ -11,8 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -27,28 +26,17 @@ public class Category {
 	
 	@Column(name = "name")
 	private String name;
-
-	@ManyToMany(
-			fetch = FetchType.LAZY, 
-			cascade = {
-					CascadeType.PERSIST, 
-					CascadeType.MERGE
-			}
-			)
-	@JoinTable(
-			name="category_article",
-			joinColumns = @JoinColumn(name="category_id"),
-			inverseJoinColumns = @JoinColumn(name="article_id")
-			)
-	private List<Article> articles= new ArrayList<>();
 	
-	public List<Article> getArticles() {
-		return articles;
-	}
-
-	public void setArticles(List<Article> articles) {
-		this.articles = articles;
-	}
+	
+	@OneToMany(
+			cascade = CascadeType.ALL,
+			fetch = FetchType.EAGER,
+			orphanRemoval = true
+			)
+	@JoinColumn(name = "category_id")
+	
+	private List<Article> articles = new ArrayList<>();
+	
 
 	public Integer getId() {
 		return id;
@@ -64,6 +52,14 @@ public class Category {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Article> getArticles() {
+		return articles;
+	}
+
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
 	}
 	
 	
