@@ -69,10 +69,7 @@ public class PublicController {
 		}
 	}
 	
-	@GetMapping("/articles")
-	public Iterable<Article> getArticles() {
-		return articleService.getArticles();
-	}
+	
 	
 	@GetMapping("/categories")
 	public Iterable<Category> getCategories() {
@@ -85,9 +82,33 @@ public class PublicController {
 		return category;
 	}
 	
+	
+	@GetMapping("/articles")
+	public Iterable<Article> getArticles() {
+		return articleService.getArticles();
+	}
+	
+	@GetMapping("/article/{id}")
+	public Article getArticles(@PathVariable("id") Integer id) {
+		Article article = articleService.getArticleById(id).get();
+		return article;
+	}
+	
+	
 	@GetMapping("/comments")
 	public Iterable<Comment> getComments() {
 		return commentService.getComments();
+	}
+	
+	@GetMapping("/comment/{id}")
+	public Comment getCommentById(@PathVariable("id") Integer id) {
+		Comment comment = commentService.getCommentById(id).get();
+		return comment;
+	}
+	
+	@PostMapping("/comments")
+	public Comment addComment(@RequestBody Comment comment) {
+		return commentService.upsert(comment);
 	}
 	
 

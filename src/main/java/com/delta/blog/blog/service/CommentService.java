@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.delta.blog.blog.model.Comment;
 import com.delta.blog.blog.repository.CommentRepository;
+
 @Service
 public class CommentService {
 
@@ -22,15 +22,14 @@ public class CommentService {
 		return commentRepository.findById(id);
 	}
 	
-//	public Optional<Comment> getCommentById(Integer id) {
-//		return commentRepository.findById(id);
-//	}
-//	
-//	public Comment addComment(Comment comment) {
-//		return commentRepository.save(comment);
-//	}
-//	
+    public Comment upsert(Comment comment) {
+    	return commentRepository.save(comment);
+    }
+    
+//
 //	public void deleteCommentById(Integer id) {
 //		commentRepository.deleteById(id);
 //	}
+    
+    
 }

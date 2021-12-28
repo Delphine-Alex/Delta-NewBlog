@@ -24,15 +24,11 @@ public class CategoryService {
 		return categoryRepository.findById(id);
 	}
 	
-//	public CategoryFull getCategoryById(Integer id) {
-//		return categoryTransformer.transform(categoryRepository.findById(id).get());
-//	}
-//	
-//	
-//	public CategoryFull addCategory(Category category) {
-//		return categoryTransformer.transform(categoryRepository.save(category));
-//	}
-//	
+	public Category upsert(Category category) {
+		return categoryRepository.save(category);
+	}
+	
+
 //	public void deleteCategoryById(Integer id) {
 //		categoryRepository.deleteById(id);
 //	}

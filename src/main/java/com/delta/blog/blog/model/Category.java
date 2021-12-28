@@ -27,6 +27,7 @@ public class Category {
 	@Column(name = "name")
 	private String name;
 	
+	
 	@OneToMany(
 			cascade = CascadeType.ALL,
 			fetch = FetchType.EAGER,
@@ -35,28 +36,7 @@ public class Category {
 	@JoinColumn(name = "category_id")
 	
 	private List<Article> articles = new ArrayList<>();
-
-//	@ManyToMany(
-//			fetch = FetchType.LAZY, 
-//			cascade = {
-//					CascadeType.PERSIST, 
-//					CascadeType.MERGE
-//			}
-//			)
-//	@JoinTable(
-//			name="category_article",
-//			joinColumns = @JoinColumn(name="category_id"),
-//			inverseJoinColumns = @JoinColumn(name="article_id")
-//			)
-//	private List<Article> articles= new ArrayList<>();
 	
-//	public List<Article> getArticles() {
-//		return articles;
-//	}
-//
-//	public void setArticles(List<Article> articles) {
-//		this.articles = articles;
-//	}
 
 	public Integer getId() {
 		return id;

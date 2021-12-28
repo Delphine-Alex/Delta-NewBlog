@@ -21,17 +21,17 @@ public class Comment {
 	@Column(name = "author_name")
 	private String author_name;
 	
-	@Column(name = "user_id")
-	private String user_id;
-	
-	@Column(name = "article_id")
-	private String article_id;
-	
 	@Column(name = "date")
 	private Date date;
 	
 	@Column(name = "comment")
 	private String comment;
+	
+	@Column(name = "user_id")
+	private String user_id;
+	
+	@Column(name = "article_id")
+	private String article_id;
 
 	
 	public Integer getId() {
@@ -65,6 +65,7 @@ public class Comment {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+	
 	public String getUser_id() {
 		return user_id;
 	}
@@ -72,6 +73,7 @@ public class Comment {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
+	
 	public String getArticle_id() {
 		return article_id;
 	}

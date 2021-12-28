@@ -22,15 +22,14 @@ public class ArticleService {
 		return articleRepository.findById(id);
 	}
 	
-//	public ArticleFull getArticleById(Integer id) {
-//		return articleTransformer.transform(articleRepository.findById(id).get());
-//	}
-//	
-//	public ArticleFull addArticle(Article article) {
-//		return articleTransformer.transform(articleRepository.save(article));
-//	}
-//	
+	public Article upsert(Article article) {
+		return articleRepository.save(article);
+	}
+	
+	
 //	public void deleteArticleById(Integer id) {
 //		articleRepository.deleteById(id);
 //	}
+	
+	
 }
