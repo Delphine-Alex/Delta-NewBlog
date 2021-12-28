@@ -37,8 +37,8 @@ CREATE TABLE articles (
    author_name VARCHAR(50) NOT NULL,
    date DATE NOT NULL,
    content VARCHAR(250) NOT NULL,
-   category_id INT NOT NULL,
-   user_id INT NOT NULL, 
+   category_id INT,
+   user_id INT, 
    CONSTRAINT PK_ARTICLE PRIMARY KEY (`id`),
    CONSTRAINT FK_ARTICLE_CATEGORY FOREIGN KEY (`category_id`) REFERENCES categories (`id`),
    CONSTRAINT FK_ARTICLE_USER FOREIGN KEY (`user_id`) REFERENCES users (`id`)
@@ -55,8 +55,8 @@ CREATE TABLE comments (
    author_name VARCHAR(50) NOT NULL,
    date DATE NOT NULL,
    comment VARCHAR(150) NOT NULL,
-   article_id INT NOT NULL,
-   user_id INT NOT NULL, 
+   article_id INT,
+   user_id INT, 
    CONSTRAINT PK_COMMENT PRIMARY KEY (`id`),
    CONSTRAINT FK_COMMENT_ARTICLE FOREIGN KEY (`article_id`) REFERENCES articles (`id`),
    CONSTRAINT FK_COMMENT_USER FOREIGN KEY (`user_id`) REFERENCES users (`id`)

@@ -14,6 +14,7 @@ public class ArticleService {
 	@Autowired
 	private ArticleRepository articleRepository;
 	
+	
 	public Iterable<Article> getArticles(){
 		return articleRepository.findAll();
 	}
@@ -26,10 +27,8 @@ public class ArticleService {
 		return articleRepository.save(article);
 	}
 	
-	
-//	public void deleteArticleById(Integer id) {
-//		articleRepository.deleteById(id);
-//	}
-	
+	public void deleteArticleById(Integer id) {
+		articleRepository.deleteById(id);
+	}
 	
 }
