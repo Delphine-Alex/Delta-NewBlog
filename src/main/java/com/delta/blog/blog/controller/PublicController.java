@@ -23,8 +23,6 @@ import com.delta.blog.blog.model.Comment;
 import com.delta.blog.blog.service.ArticleService;
 import com.delta.blog.blog.service.CategoryService;
 import com.delta.blog.blog.service.CommentService;
-//import com.delta.blog.blog.transformer.ArticleFull;
-//import com.delta.blog.blog.transformer.CategoryFull;
 
 @RestController
 @RequestMapping("api/public")
@@ -70,7 +68,6 @@ public class PublicController {
 	}
 	
 	
-	
 	@GetMapping("/categories")
 	public Iterable<Category> getCategories() {
 		return categoryService.getCategories();
@@ -82,6 +79,7 @@ public class PublicController {
 		return category;
 	}
 	
+
 	
 	@GetMapping("/articles")
 	public Iterable<Article> getArticles() {
@@ -95,6 +93,7 @@ public class PublicController {
 	}
 	
 	
+	
 	@GetMapping("/comments")
 	public Iterable<Comment> getComments() {
 		return commentService.getComments();
@@ -104,11 +103,6 @@ public class PublicController {
 	public Comment getCommentById(@PathVariable("id") Integer id) {
 		Comment comment = commentService.getCommentById(id).get();
 		return comment;
-	}
-	
-	@PostMapping("/comments")
-	public Comment addComment(@RequestBody Comment comment) {
-		return commentService.upsert(comment);
 	}
 	
 

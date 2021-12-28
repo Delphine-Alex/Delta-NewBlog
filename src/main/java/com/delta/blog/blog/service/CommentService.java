@@ -14,6 +14,7 @@ public class CommentService {
 	@Autowired
 	CommentRepository commentRepository;
 	
+	
 	public Iterable<Comment> getComments(){
 		return commentRepository.findAll();
 	}
@@ -26,10 +27,8 @@ public class CommentService {
     	return commentRepository.save(comment);
     }
     
-//
-//	public void deleteCommentById(Integer id) {
-//		commentRepository.deleteById(id);
-//	}
-    
+	public void deleteCommentById(Integer id) {
+		commentRepository.deleteById(id);
+	}
     
 }

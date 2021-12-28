@@ -1,7 +1,10 @@
 package com.delta.blog.blog.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,16 +25,15 @@ public class ArticleController {
 		return articleService.upsert(article);
 	}
 
+	@PutMapping("/article/{id}")
+	public Article Article(@RequestBody Article article) {
+		return articleService.upsert(article);
+	}
 	
-//	@PutMapping("/articles")
-//	public ArticleFull updateArticle(@RequestBody Article article) {
-//		return articleService.addArticle(article);
-//	}
-//	
-//	@DeleteMapping("/article/{id}")
-//	public void deleteArticle(@PathVariable("id") Integer id) {
-//		articleService.deleteArticleById(id);
-//	}
+	@DeleteMapping("/article/{id}")
+	public void deleteArticleById(@PathVariable("id") Integer id) {
+		articleService.deleteArticleById(id);
+	}
 	
 	
 }
