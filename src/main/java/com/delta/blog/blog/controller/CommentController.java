@@ -1,12 +1,12 @@
 package com.delta.blog.blog.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
+//import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.PutMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,19 +26,19 @@ public class CommentController {
 		return comment;
 	}
 	
-	@PostMapping("/comments")
-	public Comment addComment(@RequestBody Comment comment) {
-		return commentService.addComment(comment);
-	}
-	
-	@PutMapping("/comments")
-	public Comment updateComment(@RequestBody Comment comment) {
-		return commentService.addComment(comment); 
-	}
-	
-	@DeleteMapping("/comment/{id}")
-	public void deleteCommentById(@PathVariable("id") Integer id) {
-		commentService.deleteCommentById(id);
-	}
+//	@PostMapping("/comments")
+//	public Comment addComment(@RequestBody Comment comment) {
+//		return commentService.addComment(comment);
+//	}
+//	
+//	@PutMapping("/comments")
+//	public Comment updateComment(@RequestBody Comment comment) {
+//		return commentService.addComment(comment); 
+//	}
+//	
+//	@DeleteMapping("/comment/{id}")
+//	public void deleteCommentById(@PathVariable("id") Integer id) {
+//		commentService.deleteCommentById(id);
+//	}
 	
 }

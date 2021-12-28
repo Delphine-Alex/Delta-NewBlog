@@ -1,7 +1,5 @@
 package com.delta.blog.blog.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -12,18 +10,21 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.delta.blog.blog.configuration.JwtTokenUtil;
+import com.delta.blog.blog.model.Article;
+import com.delta.blog.blog.model.Category;
 import com.delta.blog.blog.model.Comment;
 import com.delta.blog.blog.service.ArticleService;
 import com.delta.blog.blog.service.CategoryService;
 import com.delta.blog.blog.service.CommentService;
-import com.delta.blog.blog.transformer.ArticleFull;
-import com.delta.blog.blog.transformer.CategoryFull;
+//import com.delta.blog.blog.transformer.ArticleFull;
+//import com.delta.blog.blog.transformer.CategoryFull;
 
 @RestController
 @RequestMapping("api/public")
@@ -69,13 +70,19 @@ public class PublicController {
 	}
 	
 	@GetMapping("/articles")
-	public List<ArticleFull> getArticles() {
+	public Iterable<Article> getArticles() {
 		return articleService.getArticles();
 	}
 	
 	@GetMapping("/categories")
-	public List<CategoryFull> getCategories() {
+	public Iterable<Category> getCategories() {
 		return categoryService.getCategories();
+	}
+	
+	@GetMapping("/category/{id}")
+	public Category getCategoryById(@PathVariable("id") Integer id) {
+		Category category = categoryService.getCategoryById(id).get();
+		return category;
 	}
 	
 	@GetMapping("/comments")

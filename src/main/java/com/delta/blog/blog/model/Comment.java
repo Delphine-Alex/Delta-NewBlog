@@ -33,6 +33,7 @@ public class Comment {
 	@Column(name = "comment")
 	private String comment;
 
+	
 	public Integer getId() {
 		return id;
 	}

@@ -14,16 +14,23 @@ public class CommentService {
 	@Autowired
 	CommentRepository commentRepository;
 	
-	public Optional<Comment> getCommentById(Integer id) {
-		return commentRepository.findById(id);
-	}
 	public Iterable<Comment> getComments(){
 		return commentRepository.findAll();
 	}
-	public Comment addComment(Comment comment) {
-		return commentRepository.save(comment);
+	
+	public Optional<Comment> getCommentById(Integer id) {
+		return commentRepository.findById(id);
 	}
-	public void deleteCommentById(Integer id) {
-		commentRepository.deleteById(id);
-	}
+	
+//	public Optional<Comment> getCommentById(Integer id) {
+//		return commentRepository.findById(id);
+//	}
+//	
+//	public Comment addComment(Comment comment) {
+//		return commentRepository.save(comment);
+//	}
+//	
+//	public void deleteCommentById(Integer id) {
+//		commentRepository.deleteById(id);
+//	}
 }

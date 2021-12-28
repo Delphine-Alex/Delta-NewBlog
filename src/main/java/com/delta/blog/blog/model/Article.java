@@ -12,7 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+//import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -48,29 +48,29 @@ public class Article {
 	@JoinColumn(name="article_id") 
 	
 	private List<Comment> comments= new ArrayList<>();
+//	
+//	@ManyToMany(
+//			mappedBy = "articles"  
+//			)
+//	
+//	private List<Category> categories=new ArrayList<>();
 	
-	@ManyToMany(
-			mappedBy = "articles"  
-			)
-	
-	private List<Category> categories=new ArrayList<>();
-	
 
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
-
-	public List<Category> getCategories() {
-		return categories;
-	}
-
-	public void setCategories(List<Category> categories) {
-		this.categories = categories;
-	}
+//	public List<Comment> getComments() {
+//		return comments;
+//	}
+//
+//	public void setComments(List<Comment> comments) {
+//		this.comments = comments;
+//	}
+//
+//	public List<Category> getCategories() {
+//		return categories;
+//	}
+//
+//	public void setCategories(List<Category> categories) {
+//		this.categories = categories;
+//	}
 	
 	public Integer getId() {
 		return id;
@@ -117,6 +117,14 @@ public class Article {
 
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 	
 	
