@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.delta.blog.blog.model.Article;
 import com.delta.blog.blog.service.ArticleService;
-import com.delta.blog.blog.transformer.ArticleFull;
+
 @RestController
 @RequestMapping("api/private")
 public class ArticleController {
@@ -19,19 +19,21 @@ public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
 	
-	@PostMapping("/article")
-	public ArticleFull addArticle(@RequestBody Article article) {
-		return articleService.addArticle(article);
+
+	@PostMapping("/articles")
+	public Article addArticle(@RequestBody Article article) {
+		return articleService.upsert(article);
+	}
+
+	@PutMapping("/article/{id}")
+	public Article Article(@RequestBody Article article) {
+		return articleService.upsert(article);
 	}
 	
 	@DeleteMapping("/article/{id}")
-	public void deleteArticle(@PathVariable("id") Integer id) {
+	public void deleteArticleById(@PathVariable("id") Integer id) {
 		articleService.deleteArticleById(id);
 	}
 	
-	@PutMapping("/article")
-	public ArticleFull updateArticle(@RequestBody Article article) {
-		return articleService.addArticle(article);
-	}
 	
 }
