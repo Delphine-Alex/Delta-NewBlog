@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.delta.blog.blog.model.Article;
 import com.delta.blog.blog.model.Comment;
+import com.delta.blog.blog.service.ArticleService;
 import com.delta.blog.blog.service.CommentService;
 
 @RestController
@@ -19,10 +21,14 @@ public class CommentController {
 	@Autowired
 	private CommentService commentService;
 
-	
+	@Autowired
+	ArticleService articleService;
+
 	@PostMapping("/comments")
-	public Comment addComment(@RequestBody Comment comment) {
-		return commentService.upsert(comment);
+	public Article addComment(@RequestBody Comment comment) {
+		Article existingArticle = articleService.getArticleById(Integer.parseInt(comment.getArticle_id())).get();
+		existingArticle.getComments().add(comment);
+		return articleService.upsert(existingArticle);
 	}
 
 	@PutMapping("/comment/{id}")
@@ -34,6 +40,5 @@ public class CommentController {
 	public void deleteCommentById(@PathVariable("id") Integer id) {
 		commentService.deleteCommentById(id);
 	}
-	
-	
+
 }
