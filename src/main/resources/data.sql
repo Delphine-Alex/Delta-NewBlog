@@ -11,8 +11,8 @@ CREATE TABLE categories (
 );
 
 INSERT INTO categories (id, name) VALUES 
-	(1,'category 1'), 
-	(2,'category 2');
+	(1,'Informatique'), 
+	(2,'Sport');
 
 
 CREATE TABLE users (
@@ -45,9 +45,9 @@ CREATE TABLE articles (
 );
 
 INSERT INTO articles (id, title, author_name, date, content, category_id, user_id) VALUES 
-   (1,'test', 'Pierre', '2021-11-01', 'Lorem lorem lorem', 1, 3 ),
-   (2, 'test1','Alexandre', '2021-09-20', 'Lorem lorem lorem', 1, 4), 
-   (3, 'test2', 'Alexandra', '2020-04-23', 'Lorem lorem lorem', 2, 5);
+   (1,'JAVA - Spring Boot', 'Pierre', '2021-11-01', 'Bonjour, je rencontre actuellement un problème avec les dépendences cycliques... Need help', 1, 3),
+   (2, 'SLF4J','Alexandre', '2021-09-20', 'Serais-ce la faille du siècle ?', 1, 4), 
+   (3, 'VTT chez les ourses', 'Alexandra', '2020-04-23', 'Connaissez vous des montagnes praticable en VTT habité par des animaux sauvage ?', 2, 5);
 
 
 CREATE TABLE comments (
@@ -63,6 +63,6 @@ CREATE TABLE comments (
  );
 
  INSERT INTO comments (id, author_name, date, comment, article_id, user_id) VALUES
-   (1, 'Viktor', '2021-11-01', 'super', 1 , 1),
-   (2, 'Jinx', '2020-04-23', 'good', 2 , 2),
-   (3, 'Jinx', '2020-04-23', 'top', 1 , 2);
+   (1, 'Viktor', '2021-11-01', 'Je vous conseille le cours suivant : https://openclassrooms.com/fr/courses/6982461-utilisez-spring-data-pour-interagir-avec-vos-bases-de-donnees', 1 , 1),
+   (2, 'Jinx', '2020-04-23', '42', 2 , 2),
+   (3, 'Jinx', '2020-04-23', 'La montagne aux ourses ;-)', 3 , 2);
